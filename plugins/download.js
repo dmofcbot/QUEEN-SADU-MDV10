@@ -45,7 +45,7 @@ cmd({
     store.react('⬇️');
     let tiktokData = await downloadTiktok(q);
     let captionMessage = 
-      "╭━━━〔 *KHAN-MD* 〕━━━┈⊷\n" +
+      "╭━━━〔 *QUEEN-SADU-MD* 〕━━━┈⊷\n" +
       "┃▸╭───────────\n" +
       "┃▸┃๏ *TIKTOK DOWNLOADER*\n" +
       "┃▸└───────────···๏\n" +
@@ -64,7 +64,7 @@ cmd({
       "┃▸┃๏ *3*     ┃  *Audio*\n" +
       "┃▸└────────────┈⊷\n" +
       "╰━━━━━━━━━━━━━━━⪼\n" +
-      "> *© Pᴏᴡᴇʀᴇᴅ Bʏ KʜᴀɴX-Aɪ ♡*";
+      "> *© Pᴏᴡᴇʀᴇᴅ Bʏ ᴍʀ ᴅɪɴᴇꜱʜ ♡*";
 
     const sentMessage = await conn.sendMessage(from, {
       'image': { 'url': tiktokData.result.image },
@@ -97,12 +97,12 @@ cmd({
         if (userResponse === '1') {
           await conn.sendMessage(chatID, {
             'video': { 'url': downloadLinks.dl_link.download_mp4_1 },
-            'caption': "*© Powered BY JawadTechX*"
+            'caption': "*© Powered ʙʏ ᴍʀ ᴅɪɴᴇꜱʜ*"
           }, { 'quoted': receivedMessage });
         } else if (userResponse === '2') {
           await conn.sendMessage(chatID, {
             'video': { 'url': downloadLinks.dl_link.download_mp4_2 },
-            'caption': "*© Powered BY JawadTechX*"
+            'caption': "*© Powered ʙʏ ᴍʀ ᴅɪɴᴇꜱʜ*"
           }, { 'quoted': receivedMessage });
         } else if (userResponse === '3') {
           await conn.sendMessage(chatID, {
@@ -494,7 +494,7 @@ cmd({
 ┃ 📅 *Updated On:* ${app.updated}
 ┃ 👨‍💻 *Developer:* ${app.developer.name}
 ╰━━━━━━━━━━━━━━━┈⊷
-🔗 *Powered By KhanX-AI*`;
+🔗 *Powered ᴍʀ ᴅɪɴᴇꜱʜ*`;
 
     await conn.sendMessage(from, { react: { text: "⬆️", key: m.key } });
 
