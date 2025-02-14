@@ -48,7 +48,7 @@
     "@mrnima/tiktok-downloader":"1.0.0",
     "@mrnima/facebook-downloader":"1.0.0",
     "mrnima-moviedl":"1.0.0",
-    "api-qasim": "*"
+    "api-qasim":"3.2.5"
     
   }
 }
