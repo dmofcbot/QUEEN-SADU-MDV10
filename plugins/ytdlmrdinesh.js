@@ -206,7 +206,7 @@ cmd({
   }
 });
 cmd({
-  'pattern': 'video',
+  'pattern': 'video2',
   'desc': "To download videos.",
   'react': '🎥',
   'category': "download",
