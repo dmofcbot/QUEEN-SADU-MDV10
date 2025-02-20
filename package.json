@@ -51,7 +51,8 @@
     "api-qasim":"3.2.5",
     "youtube-yts":"2.0.0",
     "ytdl-core":"4.11.5",
-    "soundcloud-downloader":"1.0.0"
+    "soundcloud-downloader":"1.0.0",
+    "cli-progress":"3.12.0"
     
   }
 }
