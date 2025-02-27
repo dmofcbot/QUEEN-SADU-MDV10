@@ -79,7 +79,7 @@ async (conn, mek, m, { from, reply }) => {
 });
 
 cmd({
-    pattern: "😡",
+    pattern: "update",
     desc: "Displays a dynamic edit msg for fun.",
     category: "tools",
     react: "🤡",
@@ -89,8 +89,8 @@ async (conn, mek, m, { from, reply }) => {
     try {
         const loadingMessage = await conn.sendMessage(from, { text: '👽' });
         const emojiMessages = [
-            "😡", "😠", "🤬", "😤", "😾", "😡",
-            "😠", "🤬", "😤", "😾"
+            "*`𝐌𝐑 𝐋𝐀𝐊𝐈𝐘𝐀`*", "*`𝐒𝐄𝐍𝐔𝐉𝐈`*", "*`𝐌𝐑 𝐌𝐈𝐇𝐈𝐑𝐀𝐍𝐆𝐀`*", "*`𝐓𝐇𝐀𝐍𝐊 𝐘𝐎𝐔`*", "*`𝐅𝐎𝐑 𝐒𝐄𝐓𝐓𝐈𝐍𝐆`*", "*`𝐒𝐘𝐒𝐓𝐄𝐌 𝐔𝐏𝐃𝐀𝐓𝐄`*","*`𝐌𝐑 𝐃𝐈𝐍𝐄𝐒𝐇 𝐎𝐅𝐂`*"
+            
         ];
 
         for (const line of emojiMessages) {
