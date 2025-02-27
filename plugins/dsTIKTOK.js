@@ -1,55 +1,43 @@
-const {cmd , commands} = require('../command');
-const { ttdl } = require('ruhend-scraper');
+const { cmd } = require('../command');
+const axios = require('axios');
 
 cmd({
     pattern: "tiktok",
-    desc: "To download tiktok videos.",
-    category: "download",
+    alias: ["ttdl", "tt", "tiktokdl"],
+    desc: "Download TikTok video without watermark",
+    category: "downloader",
+    react: "🎵",
     filename: __filename
 },
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-
-  if (!args[0]) {
-    return reply('*`ρℓєαѕє gινє α ωαιℓ∂ тιктσк ℓιηк`*');
-  }
-
-  await m.react('🕒');
-  let res;
-  try {
-    res = await igdl(args[0]);
-  } catch (error) {
-    return reply('*`єяяσя σвтαιηιηg ∂αтα.`*');
-  }
-
-  let result = res.data;
-  if (!result || result.length === 0) {
-    return reply('*`ησ яєѕαℓт ƒσυη∂.`*');
-  }
-
-  let data;
-  try {
-    data = result.find(i => i.resolution === "720p (HD)") || result.find(i => i.resolution === "360p (SD)");
-  } catch (error) {
-    return reply('*`єяяσя ∂αтα ℓσѕѕ.`*');
-  }
-
-  if (!data) {
-    return reply('*`ησ ∂αтα ƒσυη∂.`*');
-  }
-
-  await m.react('✅');
-  let video = data.url;
-  let dev = 'QUEEN-SADU MD Tiktok Downloader | Download with ease, cherish forever.'
-  
-  try {
-    await conn.sendMessage(m.chat, { video: { url: video }, caption: dev, fileName: 'tt.mp4', mimetype: 'video/mp4' }, { quoted: m });
-  } catch (error) {
-    return reply('*`єяяσя ∂σωηℓσα∂ νι∂єσ.`*');
-  await m.react('❌');
-  }
-}catch(e){
-console.log(e)
-  reply(`αη єяяσя`)
-}
+async (conn, mek, m, { from, args, q, reply }) => {
+    try {
+        if (!q) return reply("Please provide a TikTok video link.");
+        if (!q.includes("tiktok.com")) return reply("Invalid TikTok link.");
+        
+        reply("Downloading video, please wait...");
+        
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${q}`;
+        const { data } = await axios.get(apiUrl);
+        
+        if (!data.status || !data.data) return reply("Failed to fetch TikTok video.");
+        
+        const { title, like, comment, share, author, meta } = data.data;
+        const videoUrl = meta.media.find(v => v.type === "video").org;
+        
+        const caption = `🎵 *TikTok Video* 🎵\n\n` +
+                        `👤 *User:* ${author.nickname} (@${author.username})\n` +
+                        `📖 *Title:* ${title}\n` +
+                        `👍 *Likes:* ${like}\n💬 *Comments:* ${comment}\n🔁 *Shares:* ${share}`;
+        
+        await conn.sendMessage(from, {
+            video: { url: videoUrl },
+            caption: caption,
+            contextInfo: { mentionedJid: [m.sender] }
+        }, { quoted: mek });
+        
+    } catch (e) {
+        console.error("Error in TikTok downloader command:", e);
+        reply(`An error occurred: ${e.message}`);
+    }
 });
+          
