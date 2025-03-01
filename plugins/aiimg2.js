@@ -1,5 +1,24 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const config = require('../config');
 const { cmd, commands } = require('../command');
 const { fetchJson } = require('../lib/functions');
@@ -41,11 +60,11 @@ cmd({
       return reply(`*Usage:* ${command} <prompt>\n\n*Example:* ${command} cat`);
     }
 
-    await reply('> *Queen sadu Processing Image...*');
+    await reply('> *`Queen sadu Processing Image...`*');
 
     const apiUrl = `https://apis.davidcyriltech.my.id/flux?prompt=${encodeURIComponent(text)}`;
 
-    await conn.sendMessage(m.chat, { image: { url: apiUrl }, caption: `🎨 *`DINESH-AI-IMAGE GENERATOR`*\n\n📄 *Prompt:* ${text}\n\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ ғʀᴀɴᴋ` }, { quoted: m });
+    await conn.sendMessage(m.chat, { image: { url: apiUrl }, caption: `🎨 *Flux Image Generator*\n\n📄 *Prompt:* ${text}\n\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ ғʀᴀɴᴋ` }, { quoted: m });
   } catch (error) {
     console.error('Error in Flux command:', error);
     reply(`*AN ERROR OCCURRED!! MESSAGE :*\n\n> ${error.message}`);
